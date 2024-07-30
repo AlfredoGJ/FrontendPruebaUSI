@@ -1,25 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Container, Stack, Typography } from "@mui/material";
+import { Empleado } from "./types/types";
+import { EmpleadosTable } from "./components/Table";
+
+const empleados: Empleado[] = [
+  {
+    id: "",
+    nombres: "Jose Samuel",
+    apellidoPaterno: "Rodriguez",
+    apellidoMaterno: "Granja",
+    edad: 30,
+    genero: true,
+    direccion: {
+      id: "",
+      calle: "Andador Desierto Del Sahara",
+      numero: 135,
+      codigoPostal: 78345,
+      entidadFederativa: {
+        id: "",
+        nombre: "San Luis Potosi",
+      },
+    },
+    gradoDeEstudios: {
+      id: "",
+      nombre: "Licenciatura",
+    },
+    puestoDeTrabajo: {
+      id: "",
+      nombre: "Gerente General",
+    },
+    tipoDeEmpleado: {
+      id: "",
+      nombre: "Administrativo",
+    },
+    telefonos: [
+      {
+        id: "",
+        numero: "4442776653",
+        extension: "456",
+        tipo: "Movil",
+        idEmpleado: "",
+      },
+    ],
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="App">
+      <Stack>
+        <Typography variant="h2"> Registro De Empleados</Typography>
+      </Stack>
+      <EmpleadosTable empleados={empleados} />
+    </Container>
   );
 }
 
