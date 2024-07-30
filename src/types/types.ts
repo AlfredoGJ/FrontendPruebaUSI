@@ -50,6 +50,7 @@ interface Empleado {
 
 export type {
   Empleado,
+  Telefono,
   Direccion,
   EntidadFederativa,
   GradoDeEstudios,

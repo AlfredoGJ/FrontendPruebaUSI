@@ -1,18 +1,27 @@
-import { Collapse, IconButton, TableCell, TableRow } from "@mui/material";
+import {
+  Box,
+  Collapse,
+  IconButton,
+  TableCell,
+  TableRow,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Empleado } from "../types/types";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState } from "react";
+import { BorderBottom, Label } from "@mui/icons-material";
+import { AddressComponent } from "./Address";
+import { PhonesComponent } from "./Telefonos";
 
 interface EmpleadoRowProps {
   empleado: Empleado;
 }
 
 export const EmpleadoRow = ({ empleado }: EmpleadoRowProps) => {
-  const Address = <> Address</>;
-  const Phone = <>Phone</>;
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
   const [accordionUI, setAccordionUI] = useState("Address");
 
@@ -37,7 +46,7 @@ export const EmpleadoRow = ({ empleado }: EmpleadoRowProps) => {
   }
   return (
     <>
-      <TableRow>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>{empleado.nombres}</TableCell>
         <TableCell>{empleado.apellidoPaterno}</TableCell>
         <TableCell>{empleado.apellidoMaterno}</TableCell>
@@ -67,9 +76,19 @@ export const EmpleadoRow = ({ empleado }: EmpleadoRowProps) => {
           </IconButton>
         </TableCell>
       </TableRow>
-      <Collapse in={isCollapseOpen}>
-        <TableRow>{accordionUI === "Phone" ? Phone : Address}</TableRow>
-      </Collapse>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
+          <Collapse in={isCollapseOpen}>
+            <Box sx={{ margin: 1 }}>
+              {accordionUI === "Phone" ? (
+                <PhonesComponent telefonos={empleado.telefonos} />
+              ) : (
+                <AddressComponent direccion={empleado.direccion} />
+              )}
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
     </>
   );
 };
