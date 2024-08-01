@@ -115,7 +115,7 @@ function App() {
           onEmpledoDelete={handleEmpleadoDeleteClick}
         />
         <Stack direction="row" justifyContent="space-between" marginTop={2}>
-          <Button>Descargar .csv</Button>
+          {/* <Button>Descargar .csv</Button> */}
           <Button variant="contained" onClick={() => setAddDialogOpen(true)}>
             <AddIcon /> Agregar Empleado
           </Button>
