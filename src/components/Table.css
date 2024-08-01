@@ -1,0 +1,7 @@
+.empleado-table-head{
+    background-color: rgb(66, 64, 66);
+}
+
+.empleado-table-head  th {
+    color: azure;
+}

@@ -19,9 +19,10 @@ import { PhonesComponent } from "./Telefonos";
 
 interface EmpleadoRowProps {
   empleado: Empleado;
+  onDelete: (epleado: Empleado) => void;
 }
 
-export const EmpleadoRow = ({ empleado }: EmpleadoRowProps) => {
+export const EmpleadoRow = ({ empleado, onDelete }: EmpleadoRowProps) => {
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
   const [accordionUI, setAccordionUI] = useState("Address");
 
@@ -56,22 +57,17 @@ export const EmpleadoRow = ({ empleado }: EmpleadoRowProps) => {
         <TableCell>{empleado.tipoDeEmpleado.nombre}</TableCell>
         <TableCell>{empleado.gradoDeEstudios.nombre}</TableCell>
         <TableCell>
-          <IconButton onClick={handleAddressClick}>
+          <IconButton color="info" onClick={handleAddressClick}>
             <HomeIcon />
           </IconButton>
         </TableCell>
         <TableCell>
-          <IconButton onClick={handlePhoneClick}>
+          <IconButton color="info" onClick={handlePhoneClick}>
             <LocalPhoneIcon />
           </IconButton>
         </TableCell>
         <TableCell>
-          <IconButton>
-            <EditIcon />
-          </IconButton>
-        </TableCell>
-        <TableCell>
-          <IconButton>
+          <IconButton color="error" onClick={() => onDelete(empleado)}>
             <ClearIcon />
           </IconButton>
         </TableCell>
